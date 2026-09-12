@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-lg: 1.25rem;
+  --radius-md: 1rem;
+  --radius-sm: 0.75rem;
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0b1120;
+  --card: #ffffff;
+  --card-foreground: #0b1120;
+  --popover: #ffffff;
+  --popover-foreground: #0b1120;
+  --primary: #2563eb; /* QuickFix Blue */
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #14b8a6; /* QuickFix Teal */
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #2563eb;
+}
+
+.dark {
+  --background: #050b18; /* Deep Navy */
+  --foreground: #f1f5f9;
+  --card: #0a1224;
+  --card-foreground: #f1f5f9;
+  --popover: #0a1224;
+  --popover-foreground: #f1f5f9;
+  --primary: #3b82f6; /* QuickFix Blue */
+  --primary-foreground: #ffffff;
+  --secondary: #0f1b30;
+  --secondary-foreground: #f1f5f9;
+  --muted: #111e33;
+  --muted-foreground: #94a3b8;
+  --accent: #2dd4bf; /* QuickFix Teal */
+  --accent-foreground: #04120f;
+  --destructive: #ef4444;
+  --destructive-foreground: #f1f5f9;
+  --border: #17233b;
+  --input: #111e33;
+  --ring: #3b82f6;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Premium Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-red {
+  /* Kept intentionally red-tinted: used only for SOS / emergency / danger
+     surfaces where a universal "alert" color aids usability regardless
+     of brand theme. */
+  background: rgba(239, 68, 68, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(239, 68, 68, 0.12);
+}
+
+.animate-pulse-slow {
+  animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.1; }
+}
+
+.selection\:bg-primary\/30 ::selection {
+  background-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2563eb55;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb99;
+}
